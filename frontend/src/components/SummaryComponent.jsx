@@ -1,5 +1,6 @@
 import React from 'react';
 import TextComponent from './TextComponent';
+import HeaderComponent from './HeaderComponent';
 
 const SummaryComponent = ({ summary, links }) => {
   if (!summary) return null;
@@ -22,7 +23,7 @@ const SummaryComponent = ({ summary, links }) => {
   const parsedText = parseTextWithLinks(summary, links);
   return (
     <div style={{ marginBottom: '20px', display: "flex",flexDirection:"column" }}>
-      <p style={{ fontSize: '1.75rem', fontWeight: "bold", textDecoration: 'underline',}}>Summary:</p>
+      <HeaderComponent title={"Summary"}/>
       <TextComponent text={parsedText}/>
     </div>
   );
