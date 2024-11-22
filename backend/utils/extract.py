@@ -13,15 +13,14 @@ from nltk.stem import WordNetLemmatizer
 from scipy.spatial.distance import cdist
 import json
 import Levenshtein
-import praw
 import numpy as np
 from datetime import datetime
 from dotenv import load_dotenv
 import os
-
 # Load environment variables from .env file
-"""
 load_dotenv()
+"""
+
 reddit = praw.Reddit(
     client_id= os.getenv('REDDIT_CLIENT_ID'),            
     client_secret= os.getenv('REDDIT_CLIENT_SECRET'),   
@@ -320,7 +319,7 @@ def get_infobox(title, alt_image, display=False):
 
 def get_type(query):
     client = Groq(
-        api_key="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",
+        api_key=os.getenv('GROQ_APIKEY'),
     )
     
     chat_completion = client.chat.completions.create(
@@ -356,7 +355,7 @@ def find_similar_strings(set1, set2, threshold=0.8):
 
 def get_summary(text, category, query):
     client = Groq(
-        api_key="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",
+        api_key=os.getenv('GROQ_APIKEY'),
     )
 
     chat_completion = client.chat.completions.create(
